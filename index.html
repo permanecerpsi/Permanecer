@@ -1,285 +1,636 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Permanecer · Psicología · Terapias Contextuales · Buenos Aires</title>
-  <meta name="description" content="Sesiones, talleres y acompañamiento basado en DBT, ACT y abordajes de Trauma. Online y presencial en Buenos Aires."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    :root{--sage:#4A6741;--sage-light:#7A9E6E;--sage-pale:#C8D9BF;--cream:#F5F0E8;--cream-dark:#EDE6D6;--text:#2A2A22;--muted:#666658;}
-    html{scroll-behavior:smooth;}
-    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Permanecer · Psicología DBT y Trauma · Buenos Aires</title>
+<meta name="description" content="Centro de psicoterapia virtual especializado en DBT, ACT, mindfulness y trauma. Online en todo el mundo y presencial en Buenos Aires.">
+<meta name="theme-color" content="#1c0202">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Permanecer · Psicología DBT y Trauma">
+<meta property="og:description" content="¿Ya fuiste a terapia y seguís igual? Psicoterapia basada en evidencia: DBT, ACT, mindfulness y trauma.">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --naranja:#e77b27;
+  --ambar:#f19b2f;
+  --bordo:#3a0506;
+  --negro:#1c0202;
+  --crema:#f6eadb;
+  --arena:#ebd0a7;
+  --amarillo:#ffd337;
+  --petroleo:#1d3443;
+  --hueso:#fff8f0;
+  --max:1160px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  font-family:"League Spartan","Helvetica Neue",Arial,sans-serif;
+  background:var(--crema);
+  color:var(--negro);
+  font-weight:400;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+}
 
-    /* TICKER */
-    .ticker{background:var(--sage);overflow:hidden;height:56px;display:flex;align-items:center;}
-    .ticker-inner{display:flex;align-items:center;width:100%;justify-content:center;position:relative;height:100%;}
-    .ticker-phrase{position:absolute;width:100%;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;font-weight:400;color:#fff;padding:0 60px;opacity:0;transition:opacity 0.7s ease;text-shadow:0 0 18px rgba(255,255,255,0.55),0 1px 3px rgba(0,0,0,0.15);}
-    .ticker-phrase.active{opacity:1;}
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  background:rgba(28,2,2,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(235,208,167,.12);
+  transition:background .3s ease;
+}
+.nav-in{
+  max-width:var(--max);margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{display:flex;align-items:center;gap:10px;color:var(--hueso)}
+.brand svg{width:30px;height:auto;color:var(--hueso)}
+.brand span{font-size:1.18rem;font-weight:600;letter-spacing:-.01em}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{
+  font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,248,240,.82);transition:color .2s ease;
+}
+.nav-links a:hover{color:var(--amarillo)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:inherit;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  padding:13px 26px;border-radius:999px;border:1px solid transparent;
+  cursor:pointer;transition:transform .2s ease,background .2s ease,color .2s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-naranja{background:var(--naranja);color:var(--hueso)}
+.btn-naranja:hover{background:var(--ambar)}
+.btn-amarillo{background:var(--amarillo);color:var(--negro)}
+.btn-bordo{background:var(--bordo);color:var(--hueso)}
+.btn-ghost{border-color:rgba(58,5,6,.35);color:var(--bordo)}
+.btn-ghost-claro{border-color:rgba(255,248,240,.5);color:var(--hueso)}
+.btn-ghost-claro:hover{background:rgba(255,248,240,.12)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:var(--hueso)}
+.burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0;border-radius:2px}
 
-    /* NAV */
-    nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--cream);border-bottom:1px solid rgba(74,103,65,0.12);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);}
-    .nav-brand{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--sage);letter-spacing:0.5px;text-decoration:none;}
-    .nav-links{display:flex;gap:8px;align-items:center;}
-    .nav-item{position:relative;}
-    .nav-link{font-size:13px;color:var(--text);text-decoration:none;font-weight:400;padding:8px 14px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:background .15s,color .15s;background:transparent;border:none;font-family:'DM Sans',sans-serif;}
-    .nav-link:hover{background:var(--cream-dark);color:var(--sage);}
-    .chevron{font-size:10px;transition:transform .2s;}
-    .nav-item.open .chevron{transform:rotate(180deg);}
-    .dropdown{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid rgba(74,103,65,0.15);border-radius:14px;padding:8px;min-width:220px;box-shadow:0 8px 24px rgba(0,0,0,0.08);opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s;}
-    .nav-item.open .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-    .dropdown a{display:block;padding:10px 14px;font-size:13px;color:var(--text);text-decoration:none;border-radius:8px;transition:background .15s;}
-    .dropdown a:hover{background:var(--cream-dark);color:var(--sage);}
-    .nav-btn{background:var(--sage);color:#fff;padding:9px 20px;border-radius:50px;font-size:13px;font-weight:500;text-decoration:none;font-family:'DM Sans',sans-serif;white-space:nowrap;}
-    .nav-btn:hover{background:#3a5232;}
+.drawer{
+  position:fixed;inset:0;z-index:90;background:var(--negro);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+  opacity:0;pointer-events:none;transition:opacity .28s ease;
+}
+.drawer.open{opacity:1;pointer-events:auto}
+.drawer a{font-size:1.4rem;font-weight:600;color:var(--hueso)}
+.drawer .btn{font-size:.85rem}
+.drawer-close{
+  position:absolute;top:22px;right:26px;background:none;border:0;color:var(--hueso);
+  font-size:2rem;line-height:1;cursor:pointer;font-family:inherit;
+}
 
-    /* STEPS */
-    .steps{padding:72px 40px;max-width:900px;margin:0 auto;}
-    .sec-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;text-align:center;margin-bottom:44px;}
-    .sec-title em{font-style:italic;color:var(--sage);}
-    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-    .step-card{background:var(--sage);border-radius:22px;padding:28px 26px 24px;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;transition:transform .2s;}
-    .step-card:hover{transform:translateY(-4px);}
-    .step-icon{width:80px;height:80px;margin-bottom:20px;}
-    .step-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:#fff;margin-bottom:8px;line-height:1.2;}
-    .step-desc{font-size:13px;color:rgba(255,255,255,0.68);line-height:1.55;font-weight:300;}
-    .step-footer{display:flex;justify-content:flex-end;margin-top:20px;}
-    .step-num-badge{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;color:#fff;}
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:150px 24px 90px;
+  background:
+    radial-gradient(120% 85% at 50% 118%, var(--amarillo) 0%, var(--naranja) 26%, #8d3a10 55%, var(--negro) 85%),
+    var(--negro);
+  overflow:hidden;
+}
+.hero-arcs{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-arcs i{
+  position:absolute;left:50%;bottom:-58%;transform:translateX(-50%);
+  border:1px solid rgba(255,248,240,.16);border-radius:50%;
+}
+.hero-arcs i:nth-child(1){width:135%;aspect-ratio:1}
+.hero-arcs i:nth-child(2){width:105%;aspect-ratio:1;border-color:rgba(255,248,240,.13)}
+.hero-arcs i:nth-child(3){width:76%;aspect-ratio:1;border-color:rgba(255,248,240,.1)}
+.hero-in{position:relative;z-index:2;max-width:820px}
+.hero-logo{width:180px;margin:0 auto 46px;color:var(--hueso)}
+.hero h1{
+  font-size:clamp(2.7rem,6.6vw,5rem);
+  font-weight:700;line-height:1.02;letter-spacing:-.02em;
+  color:var(--hueso);
+}
+.hero h1 span{display:block;font-weight:300;color:var(--arena)}
+.hero p{
+  margin:30px auto 0;max-width:560px;
+  font-size:1.03rem;font-weight:300;line-height:1.7;color:rgba(255,248,240,.82);
+}
+.scroll-cue{
+  margin-top:56px;display:flex;flex-direction:column;align-items:center;gap:12px;
+  color:rgba(255,248,240,.6);
+}
+.scroll-cue i{display:block;width:1px;height:46px;background:linear-gradient(rgba(255,248,240,.05),rgba(255,248,240,.6))}
+.scroll-cue span{font-size:.66rem;font-weight:600;letter-spacing:.34em}
 
-    /* SERVICIOS - BOOK */
-    .servicios{background:var(--cream-dark);padding:80px 40px;scroll-margin-top:60px;}
-    .servicios-inner{max-width:860px;margin:0 auto;}
-    .page-title{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;text-align:center;margin-bottom:52px;}
-    .page-title em{font-style:italic;color:var(--sage);}
-    .book-container{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:24px;}
-    .book{width:620px;height:380px;position:relative;perspective:2000px;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.18));}
-    .book-spine{position:absolute;left:0;top:0;bottom:0;width:30px;background:linear-gradient(to right,#1e3318,#2d4a26 60%,#3a5232);border-radius:6px 0 0 6px;z-index:10;box-shadow:inset -4px 0 10px rgba(0,0,0,0.3);}
-    .book-spine::after{content:'permanecer';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.5);font-weight:300;}
-    .book-pages-base{position:absolute;left:30px;right:0;top:4px;bottom:4px;background:#e8e0d0;border-radius:0 8px 8px 0;}
-    .book-pages-base::before{content:'';position:absolute;left:2px;right:-2px;top:2px;bottom:-2px;background:#ddd5c5;border-radius:0 8px 8px 0;z-index:-1;}
-    .book-pages-base::after{content:'';position:absolute;left:4px;right:-4px;top:4px;bottom:-4px;background:#d0c8b8;border-radius:0 8px 8px 0;z-index:-2;}
-    .page-back{position:absolute;left:30px;right:0;top:0;bottom:0;background:#faf7f0;border-radius:0 10px 10px 0;padding:40px 44px 40px 40px;display:flex;flex-direction:column;justify-content:center;background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(74,103,65,0.07) 27px,rgba(74,103,65,0.07) 28px);background-position:0 40px;}
-    .page-flip{position:absolute;left:30px;right:0;top:0;bottom:0;transform-style:preserve-3d;transform-origin:left center;transition:transform 0.75s cubic-bezier(0.645,0.045,0.355,1.000);z-index:5;}
-    .page-flip.turning{transform:rotateY(-180deg);}
-    .page-front,.page-back-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:0 10px 10px 0;padding:40px 44px 40px 40px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;}
-    .page-front{background:#faf7f0;background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(74,103,65,0.07) 27px,rgba(74,103,65,0.07) 28px);background-position:0 40px;box-shadow:inset -8px 0 20px rgba(0,0,0,0.04);}
-    .page-back-face{background:#f0ebe0;transform:rotateY(180deg);background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(74,103,65,0.05) 27px,rgba(74,103,65,0.05) 28px);background-position:0 40px;}
-    .page-front::after{content:'';position:absolute;right:0;top:0;bottom:0;width:0;background:linear-gradient(to left,rgba(0,0,0,0.15),transparent);transition:width 0.75s ease;pointer-events:none;}
-    .page-flip.turning .page-front::after{width:60%;}
-    .p-tag{font-size:10px;letter-spacing:2.5px;color:var(--sage);font-weight:500;margin-bottom:16px;}
-    .p-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;color:var(--text);margin-bottom:14px;line-height:1.15;}
-    .p-title em{font-style:italic;color:var(--sage);}
-    .p-desc{font-size:14px;color:var(--muted);line-height:1.85;font-weight:300;max-width:340px;}
-    .p-badge{display:inline-block;background:var(--sage-pale);color:var(--sage);font-size:10px;padding:5px 14px;border-radius:20px;margin-top:20px;font-weight:500;letter-spacing:0.5px;}
-    .p-corner{position:absolute;bottom:0;right:0;width:0;height:0;border-left:24px solid transparent;border-bottom:24px solid rgba(74,103,65,0.12);}
-    .book-nav{display:flex;align-items:center;gap:16px;}
-    .book-arrow{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(74,103,65,0.3);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--sage);transition:background .2s,border-color .2s;}
-    .book-arrow:hover{background:var(--sage);color:#fff;border-color:var(--sage);}
-    .book-arrow:disabled{opacity:0.25;cursor:default;}
-    .book-arrow:disabled:hover{background:transparent;color:var(--sage);border-color:rgba(74,103,65,0.3);}
-    .book-page-count{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--muted);min-width:60px;text-align:center;}
-    .flip-hint{position:absolute;right:16px;bottom:16px;font-size:11px;color:rgba(74,103,65,0.45);display:flex;align-items:center;gap:4px;pointer-events:none;}
+/* ---------- STRIP ---------- */
+.strip{background:var(--naranja);color:var(--hueso)}
+.strip-in{
+  max-width:var(--max);margin:0 auto;padding:20px 24px;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 34px;
+}
+.strip-item{display:flex;align-items:center;gap:11px;font-size:.74rem;font-weight:600;letter-spacing:.17em;text-transform:uppercase}
+.strip-item b{width:9px;height:9px;border:1.5px solid var(--amarillo);border-radius:50%;display:block}
 
-    /* QUIÉNES */
-    .quienes{padding:80px 40px;scroll-margin-top:60px;}
-    .quienes-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
-    .quienes-left h2{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;line-height:1.1;margin-bottom:22px;}
-    .quienes-left h2 em{font-style:italic;color:var(--sage);}
-    .quienes-left p{font-size:15px;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:14px;}
-    .quienes-left p strong{color:var(--text);font-weight:500;}
-    .quienes-right{display:flex;flex-direction:column;gap:14px;}
-    .pillar{background:var(--cream-dark);border-radius:16px;padding:20px 22px;border-left:3px solid var(--sage);}
-    .pillar h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--sage);margin-bottom:5px;}
-    .pillar p{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
+/* ---------- TÍTULOS ---------- */
+.sec{position:relative;padding:110px 0;overflow:hidden}
+.h2{
+  font-size:clamp(2.1rem,4.6vw,3.5rem);font-weight:700;line-height:1.04;letter-spacing:-.02em;
+  color:var(--bordo);margin-bottom:62px;
+}
+.h2 span{display:block;font-weight:300;color:var(--naranja)}
+.sec-arc{
+  position:absolute;border:1px solid rgba(231,123,39,.38);border-radius:50%;
+  pointer-events:none;
+}
 
-    /* CTA */
-    .cta-wrap{padding:0 40px 60px;}
-    .cta-banner{background:var(--sage);border-radius:26px;padding:56px 40px;text-align:center;}
-    .cta-banner h2{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:#fff;margin-bottom:12px;}
-    .cta-banner h2 em{font-style:italic;color:var(--sage-pale);}
-    .cta-banner p{font-size:15px;color:rgba(255,255,255,0.72);margin-bottom:32px;font-weight:300;}
-    .cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
-    .btn-white{background:#fff;color:var(--sage);padding:14px 36px;border-radius:50px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;text-decoration:none;}
-    .btn-white:hover{opacity:0.9;}
-    .btn-outline-white{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,0.5);padding:14px 28px;border-radius:50px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
-    .btn-outline-white:hover{background:rgba(255,255,255,0.1);}
+/* ---------- IDENTIFICACIÓN ---------- */
+#identificacion{background:var(--crema)}
+#identificacion .sec-arc{width:620px;height:620px;right:-230px;top:120px}
+.ident-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:0 62px;position:relative;z-index:2;
+}
+.ident-item{display:flex;gap:22px;padding:34px 0;border-top:1px solid rgba(58,5,6,.16)}
+.ident-num{
+  flex:0 0 auto;width:46px;height:46px;border:1.5px solid var(--naranja);border-radius:50%;
+  display:grid;place-items:center;color:var(--naranja);font-size:.8rem;font-weight:600;letter-spacing:.04em;
+}
+.ident-item h3{font-size:1.08rem;font-weight:600;line-height:1.3;color:var(--bordo);margin-bottom:9px}
+.ident-item p{font-size:.93rem;font-weight:300;line-height:1.7;color:rgba(28,2,2,.74)}
+.ident-cierre{
+  margin-top:54px;font-size:clamp(1.05rem,2.2vw,1.32rem);font-weight:300;color:var(--bordo);
+  position:relative;z-index:2;
+}
+.ident-cierre b{font-weight:600}
+.ident-cta{
+  margin-top:54px;position:relative;z-index:2;overflow:hidden;
+  background:var(--bordo);border-radius:22px;padding:44px 46px;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:26px;
+}
+.ident-cta::after{
+  content:"";position:absolute;right:-90px;bottom:-170px;width:330px;height:330px;border-radius:50%;
+  background:radial-gradient(circle,var(--ambar),rgba(241,155,47,0) 68%);
+}
+.ident-cta p{
+  position:relative;z-index:2;max-width:470px;
+  font-size:clamp(1.1rem,2.3vw,1.4rem);font-weight:600;line-height:1.35;color:var(--hueso);
+}
+.ident-cta p span{color:var(--amarillo)}
+.ident-cta .btn{position:relative;z-index:2}
 
-    /* FOOTER */
-    footer{background:var(--cream-dark);border-top:1px solid rgba(74,103,65,0.13);padding:36px 40px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;}
-    .footer-brand{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sage);font-weight:400;}
-    .footer-links{display:flex;gap:18px;flex-wrap:wrap;}
-    .footer-links a{font-size:13px;color:var(--muted);text-decoration:none;}
-    .footer-links a:hover{color:var(--sage);}
-    .footer-copy{font-size:12px;color:var(--muted);width:100%;text-align:center;margin-top:8px;}
+/* ---------- SERVICIOS ---------- */
+#servicios{background:var(--petroleo);color:var(--hueso)}
+#servicios .h2{color:var(--hueso)}
+#servicios .h2 span{color:var(--ambar)}
+#servicios .sec-arc{width:560px;height:560px;left:-260px;bottom:-190px;border-color:rgba(235,208,167,.22)}
+.serv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;z-index:2}
+.serv{
+  background:rgba(255,248,240,.035);border:1px solid rgba(235,208,167,.16);
+  border-radius:16px;padding:32px 26px 30px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:transform .28s ease,background .28s ease,border-color .28s ease;
+}
+.serv:hover{transform:translateY(-6px);background:rgba(255,248,240,.07);border-color:rgba(241,155,47,.55)}
+.serv-num{font-size:2rem;font-weight:300;color:var(--ambar);line-height:1}
+.serv .eyebrow{color:rgba(235,208,167,.72);font-size:.64rem}
+.serv h3{font-size:1.25rem;font-weight:600;line-height:1.2;color:var(--hueso)}
+.serv h3 span{font-weight:300;color:var(--arena)}
+.serv p{font-size:.9rem;font-weight:300;line-height:1.65;color:rgba(255,248,240,.76)}
+.serv i{display:block;width:34px;height:2px;background:var(--naranja);margin-top:auto;border-radius:2px}
 
-    /* MOBILE */
-    @media(max-width:680px){
-      nav{padding:14px 20px;}
-      .nav-links .nav-link span:not(.chevron){display:none;}
-      .steps{padding:60px 20px;}
-      .steps-grid{grid-template-columns:1fr;}
-      .servicios,.quienes{padding:60px 20px;}
-      .book{width:calc(100vw - 80px);height:300px;}
-      .quienes-inner{grid-template-columns:1fr;}
-      .cta-wrap{padding:0 20px 40px;}
-      footer{padding:30px 20px;}
-    }
-  </style>
+/* ---------- QUIÉNES ---------- */
+#quienes{background:var(--crema)}
+.quienes-top{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.quienes-txt .lead{
+  font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:600;line-height:1.35;color:var(--bordo);margin-bottom:26px;
+}
+.quienes-txt p{font-size:.97rem;font-weight:300;line-height:1.8;color:rgba(28,2,2,.78);margin-bottom:18px}
+.quienes-txt blockquote{
+  border-left:3px solid var(--naranja);padding:6px 0 6px 22px;margin:26px 0;
+  font-size:1.02rem;font-weight:400;line-height:1.6;color:var(--bordo);
+}
+.quienes-foto{
+  border-radius:290px 290px 20px 20px;overflow:hidden;
+  border:1px solid rgba(231,123,39,.5);padding:14px;
+}
+.quienes-foto img{border-radius:276px 276px 12px 12px;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.valores{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:80px}
+.valor{background:var(--hueso);border:1px solid rgba(58,5,6,.1);border-radius:16px;padding:30px 26px}
+.valor i{
+  display:grid;place-items:center;width:44px;height:44px;border-radius:50%;margin-bottom:18px;
+  color:var(--hueso);
+}
+.valor:nth-child(1) i{background:var(--naranja)}
+.valor:nth-child(2) i{background:var(--petroleo)}
+.valor:nth-child(3) i{background:var(--amarillo);color:var(--negro)}
+.valor i svg{width:20px;height:20px}
+.valor h3{font-size:1.08rem;font-weight:600;line-height:1.25;color:var(--bordo);margin-bottom:9px}
+.valor p{font-size:.9rem;font-weight:300;line-height:1.7;color:rgba(28,2,2,.72)}
+
+.equipo{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:24px}
+.persona{
+  position:relative;overflow:hidden;background:var(--bordo);color:var(--hueso);
+  border-radius:20px;padding:34px 32px;display:flex;gap:24px;
+}
+.persona::after{
+  content:"";position:absolute;left:-70px;top:-120px;width:250px;height:250px;border-radius:50%;
+  background:radial-gradient(circle,rgba(241,155,47,.5),rgba(241,155,47,0) 70%);
+}
+.persona img{
+  position:relative;z-index:2;flex:0 0 auto;width:88px;height:88px;border-radius:50%;
+  object-fit:cover;border:2px solid var(--ambar);
+}
+.persona div{position:relative;z-index:2}
+.persona h3{font-size:1.22rem;font-weight:600;line-height:1.2;margin-bottom:6px}
+.persona .eyebrow{color:var(--ambar);font-size:.63rem;display:block;margin-bottom:14px}
+.persona p{font-size:.9rem;font-weight:300;line-height:1.65;color:rgba(255,248,240,.82);margin-bottom:16px}
+.mn{
+  display:inline-block;font-size:.66rem;font-weight:600;letter-spacing:.14em;
+  border:1px solid rgba(235,208,167,.4);border-radius:999px;padding:6px 14px;color:var(--arena);
+}
+.areas{margin-top:72px;text-align:center}
+.areas .eyebrow{color:var(--naranja);display:block;margin-bottom:22px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.chips span{
+  border:1px solid rgba(58,5,6,.22);border-radius:999px;padding:10px 22px;
+  font-size:.88rem;font-weight:400;color:var(--bordo);background:var(--hueso);
+}
+
+/* ---------- CTA ---------- */
+#cta-section{
+  position:relative;text-align:center;padding:110px 0;overflow:hidden;
+  background:radial-gradient(115% 130% at 50% 8%, var(--amarillo) 0%, var(--ambar) 30%, var(--naranja) 62%, #c25f16 100%);
+  color:var(--negro);
+}
+#cta-section .sec-arc{width:760px;height:760px;left:50%;top:60px;transform:translateX(-50%);border-color:rgba(255,248,240,.3)}
+.cta-badge{
+  position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(28,2,2,.3);border-radius:999px;padding:9px 20px;margin-bottom:30px;
+  font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+}
+.cta-badge b{width:8px;height:8px;border-radius:50%;background:var(--bordo);display:block}
+#cta-section h2{
+  position:relative;z-index:2;
+  font-size:clamp(2.3rem,5.4vw,4rem);font-weight:700;line-height:1.04;letter-spacing:-.02em;color:var(--negro);
+}
+#cta-section h2 span{font-weight:300;color:var(--hueso)}
+#cta-section > .wrap > p{
+  position:relative;z-index:2;margin:22px auto 38px;font-size:1.05rem;font-weight:300;color:rgba(28,2,2,.8);
+}
+.cta-botones{position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--negro);color:var(--hueso);padding:76px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px}
+.foot-logo{width:120px;color:var(--hueso);margin-bottom:20px}
+.foot-brand p{font-size:.9rem;font-weight:300;color:rgba(255,248,240,.62)}
+footer h3{font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ambar);margin-bottom:20px}
+footer li{margin-bottom:11px;font-size:.92rem;font-weight:300;color:rgba(255,248,240,.72)}
+footer li a{transition:color .2s ease}
+footer li a:hover{color:var(--amarillo)}
+.foot-bottom{
+  margin-top:64px;border-top:1px solid rgba(235,208,167,.14);padding:24px 0 30px;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
+  font-size:.76rem;font-weight:300;color:rgba(255,248,240,.5);
+}
+.foot-bottom span:last-child{letter-spacing:.1em}
+
+/* ---------- WHATSAPP ---------- */
+.wa{
+  position:fixed;right:22px;bottom:22px;z-index:70;
+  width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;
+  display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.28);
+  transition:transform .22s ease;
+}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:28px;height:28px}
+
+/* ---------- REVEAL ---------- */
+.rev{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rev.on{opacity:1;transform:none}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:980px){
+  .serv-grid{grid-template-columns:repeat(2,1fr)}
+  .quienes-top{grid-template-columns:1fr;gap:44px}
+  .quienes-foto{max-width:440px;margin:0 auto}
+  .valores{grid-template-columns:1fr}
+  .equipo{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:38px}
+}
+@media (max-width:760px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .sec{padding:78px 0}
+  .h2{margin-bottom:42px}
+  .ident-grid{grid-template-columns:1fr;gap:0}
+  .ident-cta{padding:34px 28px}
+  .serv-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .persona{flex-direction:column}
+  .hero-logo{width:140px;margin-bottom:34px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rev{opacity:1;transform:none;transition:none}
+}
+</style>
 </head>
 <body>
 
-<!-- TICKER -->
-<div class="ticker"><div class="ticker-inner" id="ticker"></div></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="p-paths">
+      <path fill="currentColor" d="M1 886C0 886 -0 863 -0 834L0 783L13 783L26 783L26 786C26 791 26 791 31 787C39 781 53 779 63 783C91 795 89 842 60 853C51 856 35 853 30 846C26 842 26 844 26 866L26 887L14 887C7 887 1 887 1 886ZM125 854C111 852 100 845 94 834C90 826 90 808 94 801C105 775 148 773 161 798C165 805 167 816 165 821L163 824L140 824C114 824 114 824 120 830C125 836 136 836 146 831L152 828L157 837L162 845L160 847C157 850 148 853 141 854C138 854 135 854 134 854C132 855 129 854 125 854ZM593 854C569 851 555 830 561 806C568 776 618 771 631 800C634 807 636 817 634 821L633 824L609 824C587 824 585 824 585 826C584 833 604 837 614 832C621 828 621 828 627 837L632 845L627 848C618 853 605 855 593 854ZM394 851C364 836 370 787 403 781C411 779 423 783 429 788L431 790L431 787L431 783L444 783L458 783L458 818L458 852L444 852L431 852L431 848L431 844L428 847C418 855 405 856 394 851ZM672 853C662 850 653 844 648 835C643 827 643 810 647 802C653 789 666 781 683 781C693 781 708 785 708 788C708 788 697 805 696 805C696 805 694 804 692 804C678 799 667 808 670 822C673 831 681 835 691 832C693 831 696 830 696 830C698 830 708 847 707 848C703 852 681 855 672 853ZM739 853C708 843 704 798 734 784C745 779 765 780 774 787C783 793 788 803 788 815C789 824 789 824 763 824C737 824 737 824 743 830C748 836 759 836 769 831L775 828L780 836L785 844L782 847C775 853 751 856 739 853ZM877 852C867 846 865 835 874 827C880 821 891 822 897 830C906 842 890 860 877 852ZM175 818L175 783L188 783L202 784L201 786C201 788 202 789 202 789C202 789 204 787 207 786C213 782 221 780 226 781C230 781 237 785 237 786C237 787 228 805 228 806C227 806 225 805 223 804C215 801 207 803 204 809C203 811 202 818 202 832L202 852L188 852L175 852L175 818ZM243 817L243 783L256 783L270 784L270 787L270 790L274 787C285 778 302 779 311 789L314 792L318 789C330 776 353 779 362 795L364 800L365 826L365 852L352 852L338 852L338 829L338 806L335 803C332 799 329 799 323 802C317 805 316 807 316 831L316 852L304 852L292 852L292 831C292 815 292 809 291 807C287 798 279 798 272 805C270 808 269 808 269 830L269 852L256 852L243 852L243 817ZM471 818L471 783L484 783L498 783L499 786L499 789L501 787C513 776 538 780 547 795L550 800L550 826L550 852L536 852L523 852L523 830L523 807L520 804C517 800 512 799 506 801C499 804 498 806 498 831L498 852L484 852L471 852L471 818ZM798 818L798 783L812 783L825 783L825 787L825 790L827 788C833 780 857 778 860 786C860 786 852 804 851 806C850 806 848 805 846 804C838 801 830 803 827 809C826 811 825 818 825 832L824 852L811 852L798 852L798 818ZM50 831C63 823 57 802 42 802C33 802 27 808 27 817C27 830 39 837 50 831ZM423 832C430 828 433 819 430 812C424 796 401 800 401 818C401 829 413 837 423 832ZM140 807C140 807 138 804 136 802C132 797 124 798 119 803C114 809 115 809 128 809C138 809 140 809 140 807ZM610 808C610 800 594 796 589 803C584 809 585 809 598 809C605 809 610 809 610 808ZM763 807C763 807 761 804 759 802C755 798 748 798 743 802C737 808 738 809 751 809C761 809 763 809 763 807ZM392 718C328 713 254 684 203 642C193 635 195 635 193 641C186 658 179 666 169 670C159 672 116 671 109 667C96 661 104 653 129 646C149 640 154 638 157 633C159 630 164 609 163 608C163 607 158 601 153 595C120 556 98 518 84 474C56 392 59 302 92 223C171 31 395 -54 582 36L600 45L603 42C607 40 612 37 612 37C612 38 610 39 607 41C596 48 586 60 579 72C578 76 576 78 576 78C576 76 580 68 586 61C589 56 591 53 591 53C590 52 567 41 556 37C449 -7 327 6 230 71C84 169 35 359 114 516C127 542 151 577 165 590L168 593L168 588C169 580 175 559 181 540C194 498 196 489 199 450C203 392 210 368 229 351C236 344 240 341 259 334C288 322 296 315 298 303C299 295 295 289 283 279C260 261 251 239 255 217C267 158 349 136 381 181C395 201 404 232 403 256C401 286 391 294 358 294C343 294 341 294 329 289C320 285 319 286 326 290C335 296 340 297 356 298C373 298 372 297 369 311C368 321 368 332 370 332C370 332 371 331 372 329C375 322 381 323 406 331C440 341 449 354 457 403C461 424 461 424 455 429C444 438 430 445 427 444C424 443 421 422 421 404C421 401 421 398 420 398C419 398 418 402 417 414C416 426 416 426 408 418C384 393 349 397 330 427C309 460 270 564 276 573C278 576 284 564 296 529C321 457 330 437 345 421C360 407 386 406 399 420C408 430 414 456 426 522C439 601 448 630 471 660C477 667 478 668 484 670C487 671 494 675 500 679C505 683 511 687 514 688C516 689 519 690 521 692L523 694L536 689C543 687 550 685 551 685C551 684 551 682 550 678C550 674 549 665 548 658C547 644 547 643 544 640C542 638 539 633 536 629C533 621 527 613 510 589C492 565 482 546 478 530C476 525 475 521 475 521C475 521 471 532 466 546C456 575 450 587 447 583C446 582 425 467 425 465C427 460 448 442 461 436C469 432 470 432 472 438C473 444 477 446 484 446C489 446 489 445 485 459C479 480 491 485 536 482L540 482L547 498C550 506 557 525 562 540C585 605 597 631 612 645C617 650 618 650 632 640C752 551 801 399 757 254C750 233 737 202 724 181C722 177 720 173 720 173C720 173 721 170 723 168L727 164L733 173C778 247 795 343 777 432C760 519 707 600 636 650C625 658 624 657 650 670C671 681 674 683 674 688C673 700 647 703 610 695C598 693 584 691 579 690L569 690L549 697C513 710 501 713 483 715C460 719 418 720 392 718ZM452 707C454 705 435 699 424 698C404 694 403 693 403 670C403 643 400 633 377 588C352 537 348 523 352 493C354 479 353 475 349 487C346 499 345 505 345 519C345 544 349 557 365 582C382 609 385 619 381 630C373 654 357 672 336 679C324 683 305 683 291 679C277 675 277 676 291 681C326 695 358 703 390 706C396 707 402 707 404 707C412 708 451 707 452 707ZM258 661C235 638 233 614 250 561C262 527 265 511 264 498C262 487 257 455 256 456C255 457 251 472 245 496C237 530 232 545 213 593C206 610 200 624 200 624C200 629 259 669 265 669C266 669 262 665 258 661ZM506 475C506 472 508 469 514 459C521 449 522 441 517 441C515 441 514 443 510 454C507 461 499 470 495 470C488 470 489 464 496 447C500 438 501 435 501 432C500 426 497 425 494 431C485 446 473 442 479 425C482 414 493 407 504 407C522 407 547 431 547 448C547 460 537 476 528 476C523 476 524 474 528 466C536 452 534 451 525 464C519 474 515 477 510 477C507 477 506 477 506 475ZM569 112C569 106 570 104 570 107C570 110 570 114 570 117C570 119 569 117 569 112ZM572 89C572 88 575 79 576 79C576 79 575 82 574 85C573 88 572 90 572 89Z"/>
+      <path fill="#ffd337" d="M647 199C612 195 583 171 573 137C569 125 569 99 573 87C599 11 701 3 735 75C765 135 714 207 647 199Z"/>
+    </g>
+    <symbol id="p-logo" viewBox="0 0 900 887"><use href="#p-paths"/></symbol>
+    <symbol id="p-iso" viewBox="0 0 900 691"><use href="#p-paths"/></symbol>
+  </defs>
+</svg>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-brand">permanecer</a>
-  <div class="nav-links">
-    <div class="nav-item" id="nav-servicios">
-      <button class="nav-link" onclick="goToServicios()"><span>Servicios</span><span class="chevron">▾</span></button>
-      <div class="dropdown">
-        <a href="#servicios" onclick="closeDropdowns()">Sesiones 1:1</a>
-        <a href="#servicios" onclick="closeDropdowns()">Entrenamiento en habilidades DBT</a>
-        <a href="#servicios" onclick="closeDropdowns()">Talleres</a>
-        <a href="#servicios" onclick="closeDropdowns()">Psiquiatría</a>
-      </div>
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#" aria-label="Permanecer, inicio">
+      <svg role="img" aria-label="Permanecer"><use href="#p-iso"/></svg>
+      <span>permanecer.</span>
+    </a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#quienes">Quiénes somos</a>
+      <a href="mailto:psico.zulepinto@gmail.com?subject=Consulta%20profesionales">Para profesionales</a>
+      <a class="btn btn-naranja" href="https://docs.google.com/forms/d/e/1FAIpQLSdGRNcCq_D334xt5PTn1sqqjgClnIHf5Yulq8iXQlVYpv0P5A/viewform" target="_blank" rel="noopener">Reservar turno</a>
     </div>
-    <div class="nav-item" id="nav-recursos">
-      <button class="nav-link" onclick="toggleNav('nav-recursos')"><span>Recursos</span><span class="chevron">▾</span></button>
-      <div class="dropdown"><a href="#">PDFs gratuitos — próximamente</a></div>
-    </div>
-    <a href="#quienes" class="nav-link"><span>Quiénes somos</span></a>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGRNcCq_D334xt5PTn1sqqjgClnIHf5Yulq8iXQlVYpv0P5A/viewform?usp=publish-editor" target="_blank" class="nav-btn">Reservar turno</a>
+    <button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- PASOS -->
-<section class="steps">
-  <h2 class="sec-title">Pasos para <em>comenzar</em></h2>
-  <div class="steps-grid">
-    <div class="step-card">
-      <div>
-        <svg class="step-icon" viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="52" rx="22" ry="14" fill="rgba(255,255,255,0.12)"/><ellipse cx="40" cy="38" rx="16" ry="20" fill="rgba(255,255,255,0.18)"/><ellipse cx="40" cy="30" rx="10" ry="12" fill="rgba(255,255,255,0.28)"/><ellipse cx="40" cy="24" rx="6" ry="7" fill="rgba(255,255,255,0.38)"/></svg>
-        <div class="step-title">Completá el formulario</div>
-        <div class="step-desc">Nos permitirá conocer tus necesidades para hacer match con tu terapeuta.</div>
-      </div>
-      <div class="step-footer"><div class="step-num-badge">1</div></div>
-    </div>
-    <div class="step-card">
-      <div>
-        <svg class="step-icon" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="44" r="18" fill="rgba(255,255,255,0.12)"/><circle cx="30" cy="34" r="12" fill="rgba(255,255,255,0.2)"/><circle cx="50" cy="32" r="10" fill="rgba(255,255,255,0.2)"/><circle cx="40" cy="26" r="8" fill="rgba(255,255,255,0.32)"/><circle cx="40" cy="26" r="4" fill="rgba(255,255,255,0.45)"/></svg>
-        <div class="step-title">Reservá tu turno</div>
-        <div class="step-desc">Nos comunicaremos con vos para agendar una sesión en el horario que te convenga.</div>
-      </div>
-      <div class="step-footer"><div class="step-num-badge">2</div></div>
-    </div>
-    <div class="step-card">
-      <div>
-        <svg class="step-icon" viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="54" rx="20" ry="10" fill="rgba(255,255,255,0.1)"/><ellipse cx="30" cy="42" rx="12" ry="16" fill="rgba(255,255,255,0.18)"/><ellipse cx="52" cy="40" rx="10" ry="14" fill="rgba(255,255,255,0.18)"/><ellipse cx="40" cy="30" rx="9" ry="11" fill="rgba(255,255,255,0.3)"/><ellipse cx="40" cy="24" rx="5" ry="6" fill="rgba(255,255,255,0.42)"/></svg>
-        <div class="step-title">Primera sesión</div>
-        <div class="step-desc">Asistí a tu primera sesión y empezá tu proceso terapéutico.</div>
-      </div>
-      <div class="step-footer"><div class="step-num-badge">3</div></div>
-    </div>
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">&times;</button>
+  <a href="#servicios">Servicios</a>
+  <a href="#quienes">Quiénes somos</a>
+  <a href="mailto:psico.zulepinto@gmail.com?subject=Consulta%20profesionales">Para profesionales</a>
+  <a class="btn btn-naranja" href="https://docs.google.com/forms/d/e/1FAIpQLSdGRNcCq_D334xt5PTn1sqqjgClnIHf5Yulq8iXQlVYpv0P5A/viewform" target="_blank" rel="noopener">Reservar turno</a>
+</div>
+
+<section class="hero" id="hero">
+  <div class="hero-arcs"><i></i><i></i><i></i></div>
+  <div class="hero-in">
+    <svg class="hero-logo" viewBox="0 0 900 887" role="img" aria-label="Permanecer"><use href="#p-paths"/></svg>
+    <h1>¿Ya fuiste a terapia<span>y seguís igual?</span></h1>
+    <p>No es que no funcionó porque algo está mal en vos. A veces el abordaje no era el que tu historia necesitaba. Hay herramientas específicas para lo que estás viviendo.</p>
+    <a class="scroll-cue" href="#identificacion"><i></i><span>SEGUIR</span></a>
   </div>
 </section>
 
-<!-- SERVICIOS -->
-<section class="servicios" id="servicios">
-  <div class="servicios-inner">
-    <h2 class="page-title"><em>Servicios</em></h2>
-    <div class="book-container">
-      <div class="book" id="book">
-        <div class="book-spine"></div>
-        <div class="book-pages-base"></div>
-        <div class="page-back" id="page-back"></div>
-        <div class="page-flip" id="page-flip">
-          <div class="page-front" id="page-front"></div>
-          <div class="page-back-face">
-            <div style="opacity:0.12;font-family:'Cormorant Garamond',serif;font-size:56px;color:var(--sage);font-weight:300;font-style:italic;">vp</div>
-          </div>
-        </div>
-        <div class="flip-hint" id="flip-hint">click para pasar →</div>
-      </div>
-      <div class="book-nav">
-        <button class="book-arrow" id="btn-prev" onclick="goBack()" disabled>←</button>
-        <div class="book-page-count" id="page-count">1 / 4</div>
-        <button class="book-arrow" id="btn-next" onclick="goNext()">→</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUIÉNES SOMOS -->
-<section class="quienes" id="quienes">
-  <div class="quienes-inner">
-    <div class="quienes-left">
-      <h2><em>Quienes somos</em></h2>
-      <p>Somos un equipo interdisciplinario de psicoterapeutas y psiquiatras con especialización en <strong>DBT, ACT</strong> y abordajes basados en Trauma (<strong>DBT-PTSD, EMDR</strong>). Trabajamos de forma online y presencial en Buenos Aires, Argentina, acompañando a personas que quieren construir una vida que valga la pena ser vivida.</p>
-      <p>Nuestro enfoque está basado en evidencia científica y en dos pilares que creemos inseparables: <strong>la validación de lo que sos y lo que viviste</strong>, y el cambio hacia lo que todavía podés ser.</p>
-    </div>
-    <div class="quienes-right">
-      <div class="pillar"><h4>Validación</h4><p>Lo que viviste importa. No minimizamos, no apuramos. Primero, te escuchamos.</p></div>
-      <div class="pillar"><h4>Evidencia científica</h4><p>Trabajamos con modelos de terapia basados en evidencia científica.</p></div>
-      <div class="pillar"><h4>Equipo interdisciplinario</h4><p>Psicoterapeutas y psiquiatras trabajando juntos por tu bienestar integral.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cta-wrap" style="margin-top:60px;">
-  <div class="cta-banner">
-    <h2>¿Listx para <em>empezar</em>?</h2>
-    <p>Completá el formulario o escribinos.</p>
-    <div class="cta-btns">
-      <a class="btn-white" href="https://docs.google.com/forms/d/e/1FAIpQLSdGRNcCq_D334xt5PTn1sqqjgClnIHf5Yulq8iXQlVYpv0P5A/viewform?usp=publish-editor" target="_blank">Formulario</a>
-      <a class="btn-outline-white" href="https://wa.me/5491127655429" target="_blank">💬 WhatsApp</a>
-    </div>
+<div class="strip">
+  <div class="strip-in">
+    <div class="strip-item"><b></b>Online y presencial</div>
+    <div class="strip-item"><b></b>Respuesta en menos de 24hs</div>
+    <div class="strip-item"><b></b>Equipo interdisciplinario</div>
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">permanecer · psicología</div>
-  <div class="footer-links">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGRNcCq_D334xt5PTn1sqqjgClnIHf5Yulq8iXQlVYpv0P5A/viewform?usp=publish-editor" target="_blank">Formulario</a>
-    <a href="https://wa.me/5491127655429" target="_blank">WhatsApp</a>
-    <a href="https://tr.ee/redE9BJb2j" target="_blank">Links</a>
+<section class="sec" id="identificacion">
+  <span class="sec-arc"></span>
+  <div class="wrap">
+    <h2 class="h2 rev">Seguro llegaste hasta acá<span>porque…</span></h2>
+    <div class="ident-grid">
+      <div class="ident-item rev">
+        <div class="ident-num">01</div>
+        <div>
+          <h3>Sentís todo muy intensamente</h3>
+          <p>Podés estar bien y, de repente, sentir que todo se desmorona. Tus emociones cambian rápido y a veces parecen tomar el control.</p>
+        </div>
+      </div>
+      <div class="ident-item rev">
+        <div class="ident-num">02</div>
+        <div>
+          <h3>Tenés miedo de que las personas que amás se vayan</h3>
+          <p>Un mensaje que no llega, una respuesta diferente o sentir distancia puede activar una pregunta difícil de apagar: ¿y si me dejan?</p>
+        </div>
+      </div>
+      <div class="ident-item rev">
+        <div class="ident-num">03</div>
+        <div>
+          <h3>En una crisis hacés cosas que después no entendés</h3>
+          <p>Cuando el dolor se vuelve demasiado intenso, reaccionás impulsivamente. Después te preguntás: ¿por qué hice esto? Si pudiera volver atrás…</p>
+        </div>
+      </div>
+      <div class="ident-item rev">
+        <div class="ident-num">04</div>
+        <div>
+          <h3>Tus vínculos pueden sentirse como una montaña rusa</h3>
+          <p>Podés pasar de sentir una conexión enorme a sentirte herido, enojado o completamente distante. Y muchas veces no entendés cómo llegaron hasta ahí.</p>
+        </div>
+      </div>
+      <div class="ident-item rev">
+        <div class="ident-num">05</div>
+        <div>
+          <h3>Hay un vacío que nada parece terminar de llenar</h3>
+          <p>Buscás sentirte mejor en otras personas, en el trabajo, en el sexo, en compras, comida, redes o cualquier cosa que te ayude a no sentirlo por un rato. Pero vuelve.</p>
+        </div>
+      </div>
+      <div class="ident-item rev">
+        <div class="ident-num">06</div>
+        <div>
+          <h3>Te cansaste de que te digan que tenés que “controlarte”</h3>
+          <p>Ya sabés que reaccionás fuerte. Lo que quizás todavía no encontraste es cómo atravesar lo que sentís sin que tus emociones manejen tu vida.</p>
+        </div>
+      </div>
+    </div>
+    <p class="ident-cierre rev">Si te sentís identificadx con dos o más, <b>tenemos las herramientas para ayudarte.</b></p>
+    <div class="ident-cta rev">
+      <p>¿Cansadx de seguir luchando solx? <span>Hay un lugar para vos.</span></p>
+      <a class="btn btn-amarillo" href="https://wa.me/5491127655429" target="_blank" rel="noopener">Contactanos</a>
+    </div>
   </div>
-  <div class="footer-copy">© 2025 Permanecer · Terapias Contextuales · Buenos Aires, Argentina</div>
+</section>
+
+<section class="sec" id="servicios">
+  <span class="sec-arc"></span>
+  <div class="wrap">
+    <h2 class="h2 rev">Nuestros<span>servicios</span></h2>
+    <div class="serv-grid">
+      <article class="serv rev">
+        <div class="serv-num">01</div>
+        <div class="eyebrow">Presencial y online</div>
+        <h3>Sesiones <span>1:1</span></h3>
+        <p>50 min · Psicoterapia individual con un terapeuta especializado.</p>
+        <i></i>
+      </article>
+      <article class="serv rev">
+        <div class="serv-num">02</div>
+        <div class="eyebrow">Grupal</div>
+        <h3>Entrenamiento <span>DBT</span></h3>
+        <p>Aprendé estrategias prácticas para afrontar momentos difíciles, reducir el sufrimiento y construir relaciones más saludables.</p>
+        <i></i>
+      </article>
+      <article class="serv rev">
+        <div class="serv-num">03</div>
+        <div class="eyebrow">Mensual</div>
+        <h3>Talleres</h3>
+        <p>Distintas temáticas todos los meses en un espacio seguro, sin juicios y con acompañamiento profesional.</p>
+        <i></i>
+      </article>
+      <article class="serv rev">
+        <div class="serv-num">04</div>
+        <div class="eyebrow">Especializado</div>
+        <h3>Psiquiatría</h3>
+        <p>Evaluación y acompañamiento psiquiátrico integrado al enfoque terapéutico.</p>
+        <i></i>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="quienes">
+  <div class="wrap">
+    <h2 class="h2 rev">Quiénes<span>somos</span></h2>
+    <div class="quienes-top">
+      <div class="quienes-txt rev">
+        <p class="lead">Permanecer nació de una convicción: nadie debería atravesar su sufrimiento en soledad ni sentirse perdidx al buscar ayuda.</p>
+        <p>Somos Zule y Dana, psicólogas y amigas. Creamos este espacio para acompañarte cuando sentís que las emociones te sobrepasan, cuando las relaciones se vuelven difíciles o cuando simplemente estás cansadx de seguir luchando solx.</p>
+        <p>Te enseñaremos a comprender lo que te está pasando, aprender nuevas formas de afrontar el dolor y construir una vida con más calma, conexión y sentido.</p>
+        <blockquote>Porque la terapia no se trata solo de sufrir menos. Se trata de vivir una vida que valga la pena ser vivida.</blockquote>
+        <p>Atendemos de forma online en todo el mundo y presencial en Buenos Aires.</p>
+      </div>
+      <div class="quienes-foto rev">
+        <img src="team-group.jpg" alt="Zuleima Pinto y Dana Basualdo" loading="lazy">
+      </div>
+    </div>
+
+    <div class="valores">
+      <div class="valor rev">
+        <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></i>
+        <h3>Validación</h3>
+        <p>Lo que viviste importa. No minimizamos, no apuramos. Primero, te escuchamos.</p>
+      </div>
+      <div class="valor rev">
+        <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.2 18A2 2 0 0 0 7 21h10a2 2 0 0 0 1.8-3L14 9.5V3"/></svg></i>
+        <h3>Evidencia científica</h3>
+        <p>Trabajamos con modelos de terapia basados en evidencia científica.</p>
+      </div>
+      <div class="valor rev">
+        <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M16.5 14.2c2.6.4 4.5 2.3 4.5 4.6"/></svg></i>
+        <h3>Equipo interdisciplinario</h3>
+        <p>Psicoterapeutas y psiquiatras trabajando juntos por tu bienestar integral.</p>
+      </div>
+    </div>
+
+    <div class="equipo">
+      <article class="persona rev">
+        <img src="team-zule.jpg" alt="Zuleima Pinto" loading="lazy">
+        <div>
+          <h3>Zuleima Pinto</h3>
+          <span class="eyebrow">Lic. en Psicología · Especialista en DBT</span>
+          <p>"Trabajo con DBT porque sé lo que es necesitar herramientas que funcionen en lugar de consejos. Eso es lo que intento darle a cada paciente."</p>
+          <span class="mn">MN 81680</span>
+        </div>
+      </article>
+      <article class="persona rev">
+        <img src="team-dana.jpg" alt="Dana Basualdo" loading="lazy">
+        <div>
+          <h3>Dana Basualdo</h3>
+          <span class="eyebrow">Lic. en Psicología · Especialista en Trauma</span>
+          <p>"Nadie puede cambiar el pasado, pero la psicoterapia puede ayudarte a afrontar mejor sus consecuencias, y a pesar de todo, o quizás a causa de ello, a crear una vida significativa que merezca la pena ser vivida."</p>
+          <span class="mn">MN 77509</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="areas rev">
+      <span class="eyebrow">Áreas de especialización del equipo</span>
+      <div class="chips">
+        <span>Trauma</span><span>TLP</span><span>Adicciones</span><span>Duelo</span>
+        <span>Ansiedad</span><span>Vínculos</span><span>Autoestima</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta-section">
+  <span class="sec-arc"></span>
+  <div class="wrap">
+    <div class="cta-badge"><b></b>Turnos disponibles esta semana</div>
+    <h2>¿Listx para <span>empezar?</span></h2>
+    <p>Completá el formulario o escribinos.</p>
+    <div class="cta-botones">
+      <a class="btn btn-bordo" href="https://docs.google.com/forms/d/e/1FAIpQLSdGRNcCq_D334xt5PTn1sqqjgClnIHf5Yulq8iXQlVYpv0P5A/viewform" target="_blank" rel="noopener">Quiero empezar</a>
+      <a class="btn btn-ghost" href="https://wa.me/5491127655429" target="_blank" rel="noopener">Contactanos</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="foot-logo" viewBox="0 0 900 887" role="img" aria-label="Permanecer"><use href="#p-paths"/></svg>
+        <p>Centro de psicoterapia virtual.</p>
+      </div>
+      <div>
+        <h3>Accesos</h3>
+        <ul>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdGRNcCq_D334xt5PTn1sqqjgClnIHf5Yulq8iXQlVYpv0P5A/viewform" target="_blank" rel="noopener">Quiero empezar</a></li>
+          <li><a href="https://wa.me/5491127655429" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://tr.ee/redE9BJb2j" target="_blank" rel="noopener">Links</a></li>
+          <li><a href="mailto:psico.zulepinto@gmail.com">psico.zulepinto@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Consultas particulares</h3>
+        <ul>
+          <li>Online y presencial · CABA</li>
+          <li>Lunes a viernes, 9 a 20 hs</li>
+          <li>Respuesta en menos de 24 hs</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Permanecer · Psicoterapia basada en evidencia · Buenos Aires, Argentina</span>
+      <span>DBT · ACT · Mindfulness · Trauma</span>
+    </div>
+  </div>
 </footer>
 
+<a class="wa" href="https://wa.me/5491127655429" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.24 8.21Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.15.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.06s.89 2.39 1.01 2.55c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
+</a>
+
 <script>
-// TICKER
-const frases=["No estás exagerando. Nunca estuviste exagerando.","No tenés que entender todo el dolor para empezar a sanar.","Lo que aprendiste para sobrevivir ya hizo su trabajo. Ahora podés aprender algo nuevo.","Merecés ayuda no porque lo hayas ganado. Sino porque sos humana.","Nadie que lleva tanto debería cargarlo solo.","No tenés que ganarte el descanso. El descanso también es parte del camino.","Hay una diferencia entre rendirse y soltar. Una te aleja de vos. La otra te acerca.","No todo lo que sentís es una verdad sobre quién sos.","A veces pedir ayuda es el acto más valiente que existe.","No tenés que tener todo resuelto para merecer apoyo.","Lo que viviste importa. Y también importa lo que todavía podés construir.","No sos tus peores días. Sos todo lo que hacés con ellos.","Sanar no es volver a ser quien eras. Es conocerte de una manera nueva.","Que algo sea difícil no significa que estés haciéndolo mal.","A veces el cambio no se siente como alivio. Se siente como miedo a lo desconocido."];
-const tkr=document.getElementById('ticker');
-frases.forEach((f,i)=>{const el=document.createElement('div');el.className='ticker-phrase'+(i===0?' active':'');el.textContent=f;tkr.appendChild(el);});
-let tc=0;setInterval(()=>{const p=document.querySelectorAll('.ticker-phrase');p[tc].classList.remove('active');tc=(tc+1)%p.length;p[tc].classList.add('active');},6000);
+(function(){
+  var burger=document.getElementById('burger'),
+      drawer=document.getElementById('drawer'),
+      close=document.getElementById('drawerClose');
+  function open(){drawer.classList.add('open');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');document.body.style.overflow='';}
+  burger.addEventListener('click',open);
+  close.addEventListener('click',shut);
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',shut);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')shut();});
 
-// NAV
-function goToServicios(){const item=document.getElementById('nav-servicios');const isOpen=item.classList.contains('open');document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));if(!isOpen){item.classList.add('open');document.getElementById('servicios').scrollIntoView({behavior:'smooth'});}}
-function closeDropdowns(){document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));}
-function toggleNav(id){const item=document.getElementById(id);const isOpen=item.classList.contains('open');document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));if(!isOpen)item.classList.add('open');}
-document.addEventListener('click',e=>{if(!e.target.closest('.nav-item'))document.querySelectorAll('.nav-item.open').forEach(el=>el.classList.remove('open'));});
-
-// BOOK
-const pages=[
-  {tag:'SERVICIO 01 · 04',title:'<em>Sesiones</em> 1:1',desc:'50 min de psicoterapia con un terapeuta especializado en terapias basadas en evidencia científica.',badge:'ONLINE · PRESENCIAL'},
-  {tag:'SERVICIO 02 · 04',title:'<em>Entrenamiento</em> DBT',desc:'Aprenderás habilidades de mindfulness, regulación emocional, efectividad interpersonal y tolerancia al malestar en grupos de máximo 10 personas.',badge:'GRUPOS PEQUEÑOS'},
-  {tag:'SERVICIO 03 · 04',title:'<em>Talleres</em>',desc:'Distintas temáticas todos los meses, para explorar herramientas y conexión en un espacio seguro y sin juicios.',badge:'MENSUAL'},
-  {tag:'SERVICIO 04 · 04',title:'<em>Psiquiatría</em>',desc:'Evaluación y acompañamiento psiquiátrico integrado al enfoque terapéutico.',badge:'ESPECIALIZADO'}
-];
-let currentPage=0,isFlipping=false;
-function pageHTML(p){return `<div class="p-tag">${p.tag}</div><div class="p-title">${p.title}</div><div class="p-desc">${p.desc}</div><div class="p-badge">${p.badge}</div><div class="p-corner"></div>`;}
-function renderPage(){document.getElementById('page-front').innerHTML=pageHTML(pages[currentPage]);document.getElementById('page-count').textContent=`${currentPage+1} / ${pages.length}`;document.getElementById('btn-prev').disabled=currentPage===0;document.getElementById('btn-next').disabled=currentPage===pages.length-1;const h=document.getElementById('flip-hint');if(h)h.style.display=currentPage===pages.length-1?'none':'flex';}
-function playPageSound(){try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const buf=ctx.createBuffer(1,ctx.sampleRate*0.2,ctx.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<d.length;i++){const t=i/ctx.sampleRate;const env=Math.exp(-t*20)*(1-Math.exp(-t*150));d[i]=(Math.random()*2-1)*env*0.4;}const src=ctx.createBufferSource();src.buffer=buf;const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=2500;f.Q.value=0.6;src.connect(f);f.connect(ctx.destination);src.start();}catch(e){}}
-function goNext(){if(isFlipping||currentPage>=pages.length-1)return;isFlipping=true;playPageSound();document.getElementById('page-back').innerHTML=pageHTML(pages[currentPage+1]);const flip=document.getElementById('page-flip');flip.classList.add('turning');setTimeout(()=>{currentPage++;flip.style.transition='none';flip.classList.remove('turning');renderPage();document.getElementById('page-back').innerHTML='';void flip.offsetHeight;flip.style.transition='';isFlipping=false;},780);}
-function goBack(){if(isFlipping||currentPage<=0)return;isFlipping=true;playPageSound();document.getElementById('page-back').innerHTML=pageHTML(pages[currentPage-1]);const flip=document.getElementById('page-flip');flip.style.transition='none';flip.classList.add('turning');void flip.offsetHeight;flip.style.transition='transform 0.75s cubic-bezier(0.645,0.045,0.355,1.000)';flip.classList.remove('turning');setTimeout(()=>{currentPage--;renderPage();document.getElementById('page-back').innerHTML='';isFlipping=false;},780);}
-document.getElementById('book').addEventListener('click',function(e){if(!e.target.closest('.book-nav'))goNext();});
-renderPage();
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target);}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.rev').forEach(function(el,i){
+    el.style.transitionDelay=(i%4)*60+'ms';
+    io.observe(el);
+  });
+})();
 </script>
 </body>
 </html>
